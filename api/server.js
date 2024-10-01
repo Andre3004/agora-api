@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const path = require("path");
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 const routes = require("./routes.js");
 app.use("/", routes);
+app.use(express.static(path.join(__dirname, "build")));
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
